@@ -23,20 +23,21 @@ public class ParamUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return  null;
+        return  -1L;
     }
 
     /**
      * 从JSON对象中提取参数
      */
     public static String getParam(JSONObject jsonObject, String field) {
-        JSONArray jsonArray = null;
+        JSONArray jsonArray;
         try {
             jsonArray = jsonObject.getJSONArray(field);
             if (jsonArray != null && jsonArray.length() > 0) {
                 return jsonArray.getString(0);
             }
         } catch (JSONException e) {
+            //e.printStackTrace();
         }
         return null;
     }

@@ -127,4 +127,18 @@ public class DateUtils {
     public static String getFormatTime(Date date) {
         return TIME_FORMAT.format(date);
     }
+
+    /**
+     * 将给定的字符串解析成日期
+     * @param time
+     * @return
+     */
+    public static Date parseTime(String time) {
+        try {
+            return TIME_FORMAT.parse(time);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

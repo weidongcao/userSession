@@ -96,7 +96,7 @@ public class StringUtils {
         for(int i = 0; i < fields.length; i++) {
             buffer.append(fields[i]);
             if(i < fields.length - 1) {
-                buffer.append(outerDelimiter);
+                buffer.append("|");
             }
         }
 

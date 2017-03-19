@@ -92,10 +92,12 @@ public class JDBCHelper {
         try {
             conn = getConnection();
             pstmt = conn.prepareStatement(sql);
-
+            conn.setAutoCommit(false);
             for(int i = 0; i < params.length; i++) {
                 pstmt.setObject(i + 1, params[i]);
             }
+            rtn = pstmt.executeUpdate();
+            conn.commit();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -186,5 +188,24 @@ public class JDBCHelper {
          * @throws Exception
          */
         void process(ResultSet rs) throws Exception;
+    }
+
+    public static void main(String[] args) {
+        JDBCHelper helper = JDBCHelper.getInstance();
+        helper.executeQuery("select * from task where task_id = ?",
+                new Object[]{1},
+                new QueryCallback(){
+
+                    @Override
+                    public void process(ResultSet rs) throws Exception {
+                        if (rs.next()) {
+                            System.out.println("rs.getLong(1) = " + rs.getLong(1));
+                            System.out.println("rs.getString(2) = " + rs.getString(2));
+                            System.out.println("rs.getString(3) = " + rs.getString(3));
+                            System.out.println("rs.getString(4) = " + rs.getString(4));
+                            System.out.println("rs.getString(8) = " + rs.getString(8));
+                        }
+                    }
+                });
     }
 }

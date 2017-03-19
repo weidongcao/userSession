@@ -68,8 +68,8 @@ public class ConfigurationManager {
 
     /**
      * 获取布尔类型的配置项
-     * @param key
-     * @return
+     * @param key property
+     * @return true & false
      */
     public static Boolean getBoolean(String key) {
         String value = getProperty(key);
@@ -78,6 +78,6 @@ public class ConfigurationManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return false;
     }
 }

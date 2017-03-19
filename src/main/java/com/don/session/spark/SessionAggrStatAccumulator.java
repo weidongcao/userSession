@@ -65,17 +65,16 @@ public class SessionAggrStatAccumulator implements AccumulatorParam<String> {
      */
     private String add(String v1, String v2) {
         //校验：v1为空的话，直接返回v2
-        if (StringUtils.isNotEmpty(v1)) {
+        if (StringUtils.isEmpty(v1)) {
             return v2;
         }
 
         //使用StringUtils工具类从v1中提取v2对应的值，并累加1
         String oldValue = StringUtils.getValueFromStringByName(v1, "\\|", v2);
         if (null != oldValue) {
-            //将范围敬意原有的值累加1
             int newValue = Integer.valueOf(oldValue) + 1;
             //使用StringUtils工具类将v1中v2对应的值设置成新的累加后的值
-            return StringUtils.setValueToStringByName(v1, ",","\\|", v2, String.valueOf(newValue));
+            return StringUtils.setValueToStringByName(v1, "=","\\|", v2, String.valueOf(newValue));
         }
 
         return v1;
