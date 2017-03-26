@@ -1,10 +1,8 @@
-package com.don.session.dao.impl;
+package com.don.session.dao.factory;
 
 
-import com.don.session.dao.ISessionAggrStatDao;
-import com.don.session.dao.ISessionDetailDao;
-import com.don.session.dao.ISessionRandomExtractDao;
-import com.don.session.dao.ITaskDao;
+import com.don.session.dao.*;
+import com.don.session.dao.impl.*;
 
 /**
    */
@@ -31,5 +29,9 @@ public class DaoFactory {
 
     public static ISessionDetailDao getSessionDetailDao() {
         return new SessionDetailDaoImpl();
+    }
+
+    public static ITop10CategoryDao getTop10CategoryDao() {
+        return new Top10CategoryDaoImpl();
     }
 }
