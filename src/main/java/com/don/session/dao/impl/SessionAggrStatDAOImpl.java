@@ -17,10 +17,10 @@ public class SessionAggrStatDAOImpl implements ISessionAggrStatDao {
     @Override
     public void insert(SessionAggrStat sessionAggrStat) {
         String sql = "insert into session_aggr_stat " +
-                "values(null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         Object[] params = new Object[]{
-//                sessionAggrStat.getTaskId(),
+                sessionAggrStat.getTaskid(),
                 sessionAggrStat.getSession_count(),
                 sessionAggrStat.getVisit_length_1s_3s_ratio(),
                 sessionAggrStat.getVisit_length_4s_6s_ratio(),
